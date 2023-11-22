@@ -3,90 +3,17 @@ import { Text, View, StyleSheet, Image, ScrollView, Dimensions, TouchableNativeF
 import Icon from "react-native-vector-icons/Ionicons";
 
 const screen = Dimensions.get('window')
-// call bằng json
 class home extends Component {
     render() {
-        const menuList = [
-            {
-                title: 'Strawberries',
-                unit: '1 lb',
-                price: '$2.45',
-                img: require('../assets/strawbery.png'),
-                color: '#FFE3E5',
-                height: screen.width * .32,
-                description: 'Quả dâu tây rất ngon.'
-            },
-            {
-                title: 'Mango',
-                unit: 'each',
-                price: '$1.01',
-                img: require('../assets/mango.png'),
-                color: '#FFE08E',
-                height: screen.width * .25,
-                description: 'mango is a juicy stone fruit (drupe) produced from numerous species of tropical trees belonging to the flowering plant genus Mangifera, cultivated mostly for their edible fruit.'
-
-
-            },
-            {
-                title: 'Blueberries',
-                unit: '1 lb',
-                price: '$4.6',
-                img: require('../assets/blueberies.png'),
-                color: '#E4E4FE',
-                height: screen.width * .27,
-                description: 'mango is a juicy stone fruit (drupe) produced from numerous species of tropical trees belonging to the flowering plant genus Mangifera, cultivated mostly for their edible fruit.'
-
-            },
-      
-            {
-                title: 'Dragon Fruit',
-                unit: '1 lb',
-                price: '$5.23',
-                img: require('../assets/dragon.png'),
-                color: '#FFEEFE',
-                height: screen.width * .26,
-                description: 'mango is a juicy stone fruit (drupe) produced from numerous species of tropical trees belonging to the flowering plant genus Mangifera, cultivated mostly for their edible fruit.'
-
-            },
-            {
-                title: 'Blueberries',
-                unit: '1 lb',
-                price: '$4.6',
-                img: require('../assets/blueberies.png'),
-                color: '#E4E4FE',
-                height: screen.width * .27,
-                description: 'mango is a juicy stone fruit (drupe) produced from numerous species of tropical trees belonging to the flowering plant genus Mangifera, cultivated mostly for their edible fruit.'
-
-
-            },
-            {
-                title: 'Dragon Fruit',
-                unit: '1 lb',
-                price: '$5.23',
-                img: require('../assets/dragon.png'),
-                color: '#FFEEFE',
-                height: screen.width * .26,
-                description: 'mango is a juicy stone fruit (drupe) produced from numerous species of tropical trees belonging to the flowering plant genus Mangifera, cultivated mostly for their edible fruit.'
-
-            }
-        ]
         return (
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <View>
-                        <View style={[styles.btnBox, styles.btnBack]}>
-                            <Image source={require('../assets/back.png')} style={styles.imgBtn} resizeMode={'contain'} />
-                        </View>
-                    </View>
-                    <View>
-                        <View style={styles.btnBox}>
-                            <Image source={require('../assets/menu.png')} style={styles.imgBtnMenu} resizeMode={'contain'} />
-                        </View>
-                    </View>
+                   
+                
                 </View>
                 <ScrollView style={{ flex: 1 }}>
                     <View style={styles.containerSearch}>
-                        <Text style={styles.headText}>Shop bán hoa quả</Text>
+                        <Text style={styles.headText}>Shop bán điện thoại</Text>
                         <View style={styles.boxSearch}>
                             <Icon name={'ios-search'} size={28} color={'#000000'} />
                             <Text style={styles.txtSearch}>Tìm kiếm</Text>
@@ -293,3 +220,66 @@ const styles = StyleSheet.create({
 })
 
 export default home
+const menuList = [
+    {
+        title: 'Iphone X',
+        price: '$52.45',
+        img: require('../assets/iphoneX.jpg'),
+        color: '#FFFFF',
+        height: screen.width * .32,
+        description: 'Iphone 10 ra đời 2017 màn hình 12inc.'
+    },
+    {
+        title: 'Iphone 11',
+       
+        price: '$1.01',
+        img: require('../assets/iPhone6.png'),
+        color: '#FFE08E',
+        height: screen.width * .25,
+        description: 'mango is a juicy stone fruit (drupe) produced from numerous species of tropical trees belonging to the flowering plant genus Mangifera, cultivated mostly for their edible fruit.'
+
+
+    },
+    {
+        title: 'Iphone 12',
+     
+        price: '$4.6',
+        img: require('../assets/iphone9.png'),
+        color: '#E4E4FE',
+        height: screen.width * .27,
+        description: 'mango is a juicy stone fruit (drupe) produced from numerous species of tropical trees belonging to the flowering plant genus Mangifera, cultivated mostly for their edible fruit.'
+
+    },
+
+    {
+        title: 'Iphone 13',
+       
+        price: '$5.23',
+        img: require('../assets/dragon.png'),
+        color: '#FFEEFE',
+        height: screen.width * .26,
+        description: 'mango is a juicy stone fruit (drupe) produced from numerous species of tropical trees belonging to the flowering plant genus Mangifera, cultivated mostly for their edible fruit.'
+
+    },
+    {
+        title: 'Iphone 6',
+     
+        price: '$4.6',
+        img: require('../assets/blueberies.png'),
+        color: '#E4E4FE',
+        height: screen.width * .27,
+        description: 'mango is a juicy stone fruit (drupe) produced from numerous species of tropical trees belonging to the flowering plant genus Mangifera, cultivated mostly for their edible fruit.'
+
+
+    },
+    {
+        title: 'Iphone 7',
+      
+        price: '$5.23',
+        img: require('../assets/dragon.png'),
+        color: '#FFEEFE',
+        height: screen.width * .26,
+        description: 'mango is a juicy stone fruit (drupe) produced from numerous species of tropical trees belonging to the flowering plant genus Mangifera, cultivated mostly for their edible fruit.'
+
+    }
+]
