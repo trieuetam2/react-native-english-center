@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  StyleSheet
 } from 'react-native';
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -23,146 +24,99 @@ const LoginScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
       <View style={{ paddingHorizontal: 25 }}>
-        <View style={{ alignItems: 'center' }}>
+        <View style={{ alignItems: 'center', marginBottom: 10, marginTop: 10 }}>
       
-        <Image
-                            source={require("../assets/hero1.jpg")}
-                            style={{
-                                height: 200,
-                                width: 200,
-                                marginRight: 8,
-                                borderRadius: 10
-                            }}
-                            resizeMode='contain'
-                        />
-
+          <Image
+              source={require("../assets/login_logo.jpg")}
+              style={{
+                  height: 200,
+                  width: 200,
+                  marginRight: 8,
+                  borderRadius: 10
+              }}
+              resizeMode='contain'
+          />
+          <Text
+            style={styles.txtLogiTitle}>
+            Đăng nhập
+          </Text>
 
         </View>
 
-        <Text
-          style={{
-            fontFamily: 'Roboto-Medium',
-            fontSize: 28,
-            fontWeight: '500',
-            color: '#333',
-            marginBottom: 30,
-          }}>
-          Login
-        </Text>
+       
 
         <InputField
-          label={'Email ID'}
+          label={'Email đăng nhập'}
+          style={styles.inputField1}
           icon={
-            <MaterialIcons
-              name="alternate-email"
+            <Ionicons
+              name="mail"
               size={20}
               color="#666"
-              style={{ marginRight: 5 }}
+              style={{ marginRight: 5, fontSize: 40 }}
             />
           }
           keyboardType="email-address"
         />
 
+
         <InputField
-          label={'Password'}
+          label={'Mật khẩu'}
+          style={styles.inputField}
           icon={
             <Ionicons
-              name="ios-lock-closed-outline"
+              name="ios-lock-closed"
               size={20}
               color="#666"
-              style={{ marginRight: 5 }}
+              style={{ marginRight: 5, fontSize: 40, }}
             />
           }
           inputType="password"
-          fieldButtonLabel={"Forgot?"}
-          fieldButtonFunction={() => { }}
+          
         />
 
-        <CustomButton label={"Login"} onPress={() => { navigation.navigate('Home')}} />
+        <CustomButton label={"Đăng nhập"} onPress={() => { navigation.navigate('UserInfo')}} />
+        {/* <CustomButton label={"Đăng nhập"} onPress={() => { navigation.navigate('StudentList')}} />
+        <CustomButton label={"Đăng nhập"} onPress={() => { navigation.navigate('CourseList')}} /> */}
 
-        <Text style={{ textAlign: 'center', color: '#666', marginBottom: 30 }}>
-          Or, login with ...
-        </Text>
-
-        <View
+        <View>
+            <Text
           style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginBottom: 30,
-          }}>
-          <TouchableOpacity
-            onPress={() => { }}
-            style={{
-              borderColor: '#ddd',
-              borderWidth: 2,
-              borderRadius: 10,
-              paddingHorizontal: 30,
-              paddingVertical: 10,
-            }}>
-          <Image
-                            source={require("../assets/facebook.png")}
-                            style={{
-                                height: 36,
-                                width: 36,
-                                marginRight: 8
-                            }}
-                            resizeMode='contain'
-                        />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => { }}
-            style={{
-              borderColor: '#ddd',
-              borderWidth: 2,
-              borderRadius: 10,
-              paddingHorizontal: 30,
-              paddingVertical: 10,
-            }}>
-           <Image
-                            source={require("../assets/facebook.png")}
-                            style={{
-                                height: 36,
-                                width: 36,
-                                marginRight: 8
-                            }}
-                            resizeMode='contain'
-                        />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => { }}
-            style={{
-              borderColor: '#ddd',
-              borderWidth: 2,
-              borderRadius: 10,
-              paddingHorizontal: 30,
-              paddingVertical: 10,
-            }}>
-          <Image
-                            source={require("../assets/facebook.png")}
-                            style={{
-                                height: 36,
-                                width: 36,
-                                marginRight: 8
-                            }}
-                            resizeMode='contain'
-                        />
-          </TouchableOpacity>
+              flexDirection: 'row',
+              fontWeight: '600',
+              textAlign: 'center',
+              marginBottom: 50,
+              fontSize: 20
+            }}>Quên mật khẩu</Text>
         </View>
-
+        
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'center',
-            marginBottom: 30,
+            marginTop: 200,
+            fontSize: 30,
           }}>
-          <Text>New to the app?</Text>
+          <Text style={{fontSize: 20}}>Chưa có tài khoản?</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-            <Text style={{ color: '#AD40AF', fontWeight: '700' }}> Register</Text>
+            <Text style={{ color: '#00cccc', fontWeight: '700', fontSize: 20, }}> Đăng ký ngay</Text>
           </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  txtLogiTitle: {
+    fontWeight: 'bold',
+    fontSize: 30,
+    marginBottom: 10, marginTop: 10 
+  },
+
+
+});
+
+
 
 export default LoginScreen;

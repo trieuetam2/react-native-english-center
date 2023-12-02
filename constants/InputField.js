@@ -15,22 +15,25 @@ export default function InputField({
         flexDirection: 'row',
         borderBottomColor: '#ccc',
         borderBottomWidth: 1,
-        paddingBottom: 8,
-        marginBottom: 25,
+        padding: 20,
+        marginTop: 10,
+        marginBottom: 20,
+        borderRadius: 100,
+        backgroundColor: '#ddd',
       }}>
       {icon}
       {inputType == 'password' ? (
         <TextInput
           placeholder={label}
           keyboardType={keyboardType}
-          style={{flex: 1, paddingVertical: 0}}
+          style={{flex: 1, paddingVertical: 0, fontSize: 30}}
           secureTextEntry={true}
         />
       ) : (
         <TextInput
           placeholder={label}
           keyboardType={keyboardType}
-          style={{flex: 1, paddingVertical: 0}}
+          style={{flex: 1, paddingVertical: 0, fontSize: 30}}
         />
       )}
       <TouchableOpacity onPress={fieldButtonFunction}>

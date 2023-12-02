@@ -30,101 +30,41 @@ const RegisterScreen = ({navigation}) => {
         showsVerticalScrollIndicator={false}
         style={{paddingHorizontal: 25}}>
         <View style={{alignItems: 'center'}}>
-          {/* <RegistrationSVG
-            height={300}
-            width={300}
-            style={{transform: [{rotate: '-5deg'}]}}
-          /> */}
+          <Text
+            style={{
+              fontSize: 28,
+              fontWeight: '500',
+              color: '#333',
+              marginBottom: 30,
+              marginTop: 30,
+              textAlign: 'center'
+            }}>
+            Đăng ký
+          </Text>
+          <Image
+                source={require("../assets/login_logo.jpg")}
+                style={{
+                    height: 200,
+                    width: 200,
+                    marginRight: 8,
+                    borderRadius: 10,
+                    marginBottom: 10
+                }}
+                resizeMode='contain'
+            />
         </View>
 
-        <Text
-          style={{
-            fontFamily: 'Roboto-Medium',
-            fontSize: 28,
-            fontWeight: '500',
-            color: '#333',
-            marginBottom: 30,
-          }}>
-          Register
-        </Text>
 
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginBottom: 30,
-          }}>
-          <TouchableOpacity
-            onPress={() => {}}
-            style={{
-              borderColor: '#ddd',
-              borderWidth: 2,
-              borderRadius: 10,
-              paddingHorizontal: 30,
-              paddingVertical: 10,
-            }}>
-            <Image
-                            source={require("../assets/facebook.png")}
-                            style={{
-                                height: 36,
-                                width: 36,
-                                marginRight: 8
-                            }}
-                            resizeMode='contain'
-                        />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {}}
-            style={{
-              borderColor: '#ddd',
-              borderWidth: 2,
-              borderRadius: 10,
-              paddingHorizontal: 30,
-              paddingVertical: 10,
-            }}>
-           <Image
-                            source={require("../assets/facebook.png")}
-                            style={{
-                                height: 36,
-                                width: 36,
-                                marginRight: 8
-                            }}
-                            resizeMode='contain'
-                        />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {}}
-            style={{
-              borderColor: '#ddd',
-              borderWidth: 2,
-              borderRadius: 10,
-              paddingHorizontal: 30,
-              paddingVertical: 10,
-            }}>
-             <Image
-                            source={require("../assets/facebook.png")}
-                            style={{
-                                height: 36,
-                                width: 36,
-                                marginRight: 8
-                            }}
-                            resizeMode='contain'
-                        />
-          </TouchableOpacity>
-        </View>
 
-        <Text style={{textAlign: 'center', color: '#666', marginBottom: 30}}>
-          Or, register with email ...
-        </Text>
 
         <InputField
-          label={'Full Name'}
+          label={'Họ và tên'}
           icon={
             <Ionicons
               name="person-outline"
               size={20}
               color="#666"
-              style={{marginRight: 5}}
+              style={{marginRight: 5, fontSize: 40}}
             />
           }
         />
@@ -136,33 +76,33 @@ const RegisterScreen = ({navigation}) => {
               name="alternate-email"
               size={20}
               color="#666"
-              style={{marginRight: 5}}
+              style={{marginRight: 5, fontSize: 40,}}
             />
           }
           keyboardType="email-address"
         />
 
         <InputField
-          label={'Password'}
+          label={'Mật khẩu'}
           icon={
             <Ionicons
               name="ios-lock-closed-outline"
               size={20}
               color="#666"
-              style={{marginRight: 5}}
+              style={{marginRight: 5, fontSize: 40,}}
             />
           }
           inputType="password"
         />
 
         <InputField
-          label={'Confirm Password'}
+          label={'Nhập lại mật khẩu'}
           icon={
             <Ionicons
               name="ios-lock-closed-outline"
               size={20}
               color="#666"
-              style={{marginRight: 5}}
+              style={{marginRight: 5, fontSize: 40,}}
             />
           }
           inputType="password"
@@ -175,12 +115,13 @@ const RegisterScreen = ({navigation}) => {
             borderBottomWidth: 1,
             paddingBottom: 8,
             marginBottom: 30,
+            marginTop: 30
           }}>
           <Ionicons
             name="calendar-outline"
             size={20}
             color="#666"
-            style={{marginRight: 5}}
+            style={{marginRight: 5, fontSize: 40, }}
           />
           <TouchableOpacity onPress={() => setOpen(true)}>
             <Text style={{color: '#666', marginLeft: 5, marginTop: 5}}>
@@ -191,17 +132,18 @@ const RegisterScreen = ({navigation}) => {
 
       
 
-        <CustomButton label={'Register'} onPress={() => {}} />
+        <CustomButton label={'Đăng ký'} onPress={() => {}} />
 
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'center',
             marginBottom: 30,
+            
           }}>
-          <Text>Already registered?</Text>
+          <Text style={{fontSize: 20}}>Đã có tài khoản?</Text>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text style={{color: '#AD40AF', fontWeight: '700'}}> Login</Text>
+            <Text style={{color: '#00cccc', fontWeight: '700', fontSize: 20}}> Đăng nhập</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
