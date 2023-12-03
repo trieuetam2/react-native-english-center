@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 
 const CourseDetailsScreen = ({ route }) => {
   // Lấy dữ liệu khóa học từ tham số định tuyến
   const { courseId, courseTitle, courseImg, courseContent } = route.params;
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.courseTitle}>{courseTitle}</Text>
       <Image source={courseImg} style={styles.courseImage} />
       <Text style={styles.courseContent}>{courseContent}</Text>
@@ -18,7 +18,7 @@ const CourseDetailsScreen = ({ route }) => {
           </View>
       </View>
 
-    </View>
+    </ScrollView>
 
     
   );
@@ -80,7 +80,8 @@ const styles = StyleSheet.create({
              
               backgroundColor: '#00cccc',
               justifyContent: 'center',
-              borderRadius: 16
+              borderRadius: 16,
+              marginBottom: 25
           },
           addCart: {
               textAlign: 'center',

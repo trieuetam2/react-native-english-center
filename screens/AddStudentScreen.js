@@ -21,12 +21,12 @@ const AddStudentScreen = ({}) => {
         </View>
       </View>
 
-      <TextInput
+      {/* <TextInput
         style={styles.input}
         placeholder="ID"
         
         editable={false}
-      />
+      /> */}
       <TextInput
         style={styles.input}
         placeholder="Name"

@@ -38,6 +38,7 @@ const SettingsStudentListScreen = () => {
     <Stack.Navigator>
       <Stack.Screen name="Student" component={StudentListScreen} options={{headerShown: false,}} />
       <Stack.Screen name="EditStudent" component={EditStudentScreen} />
+      <Stack.Screen name="AddStudent" component={AddStudentScreen} />
     </Stack.Navigator>
   );
 };
