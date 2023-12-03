@@ -9,15 +9,10 @@ import {
   Image,
 } from 'react-native';
 
-
-
-
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import CustomButton from '../constants/CustomButton';
 import InputField from '../constants/InputField';
-
-
 
 const RegisterScreen = ({navigation}) => {
   const [date, setDate] = useState(new Date());
@@ -42,7 +37,7 @@ const RegisterScreen = ({navigation}) => {
             Đăng ký
           </Text>
           <Image
-                source={require("../assets/login_logo.jpg")}
+                source={require("../assets/images/LoginScreen/login_logo.jpg")}
                 style={{
                     height: 200,
                     width: 200,

@@ -11,11 +11,12 @@ import {
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import InputField from '../constants/InputField';
 import CustomButton from '../constants/CustomButton';
 
 
-const LoginScreen = ({ navigation }) => {
+const ForgotPassScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
       <View style={{ paddingHorizontal: 25 }}>
@@ -33,7 +34,7 @@ const LoginScreen = ({ navigation }) => {
           />
           <Text
             style={styles.txtLogiTitle}>
-            Đăng nhập
+            Quên mật khẩu
           </Text>
 
         </View>
@@ -41,7 +42,7 @@ const LoginScreen = ({ navigation }) => {
        
 
         <InputField
-          label={'Email đăng nhập'}
+          label={'Nhập Email để xác nhận mã'}
           style={styles.inputField1}
           icon={
             <Ionicons
@@ -55,37 +56,9 @@ const LoginScreen = ({ navigation }) => {
         />
 
 
-        <InputField
-          label={'Mật khẩu'}
-          style={styles.inputField}
-          icon={
-            <Ionicons
-              name="ios-lock-closed"
-              size={20}
-              color="#666"
-              style={{ marginRight: 5, fontSize: 40, }}
-            />
-          }
-          inputType="password"
-          
-        />
-
-        <CustomButton label={"Đăng nhập"} onPress={() => { navigation.navigate('UserInfo')}} />
+        <CustomButton label={"Xác thực"} onPress={() => { navigation.navigate('')}} />
         {/* <CustomButton label={"Đăng nhập"} onPress={() => { navigation.navigate('StudentList')}} />
         <CustomButton label={"Đăng nhập"} onPress={() => { navigation.navigate('CourseList')}} /> */}
-
-        <TouchableOpacity onPress={() => navigation.navigate('ForgotPass')}>
-          <View>
-              <Text
-            style={{
-                flexDirection: 'row',
-                fontWeight: '600',
-                textAlign: 'center',
-                marginBottom: 50,
-                fontSize: 20
-              }}>Quên mật khẩu</Text>
-          </View>
-        </TouchableOpacity>
         
         <View
           style={{
@@ -94,9 +67,9 @@ const LoginScreen = ({ navigation }) => {
             marginTop: 200,
             fontSize: 30,
           }}>
-          <Text style={{fontSize: 20}}>Chưa có tài khoản?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-            <Text style={{ color: '#00cccc', fontWeight: '700', fontSize: 20, }}> Đăng ký ngay</Text>
+          <Text style={{fontSize: 20}}>Quay lại</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <Text style={{ color: '#00cccc', fontWeight: '700', fontSize: 20, }}> Đăng Nhập</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -116,4 +89,4 @@ const styles = StyleSheet.create({
 
 
 
-export default LoginScreen;
+export default ForgotPassScreen;

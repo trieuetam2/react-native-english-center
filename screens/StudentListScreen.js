@@ -3,16 +3,16 @@ import { View, Text, FlatList, StyleSheet, TouchableOpacity, Alert, TextInput } 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Icon from "react-native-vector-icons/Ionicons";
 
-const StudentListScreen = () => {
+const StudentListScreen = ({navigation}) => {
   const [students, setStudents] = useState([
-    { id: '1', name: 'John Doe', class: 'Class A', batch: 'Batch 2023', enrollmentDate: '2023-01-01' },
-    { id: '2', name: 'Jane Smith', class: 'Class B', batch: 'Batch 2022', enrollmentDate: '2022-12-15' },
-    { id: '3', name: 'Jane Smith 2', class: 'Class C', batch: 'Batch 2022', enrollmentDate: '2022-12-15' },
-    { id: '4', name: 'Jane Smith 4', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15' },
-    { id: '5', name: 'Jane Smith 5', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15' },
-    { id: '6', name: 'Jane Smith 6', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15' },
-    { id: '7', name: 'Jane Smith 7', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15' },
-    { id: '8', name: 'Jane Smith 8', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15' },
+    { id: '1', name: 'John Doe', class: 'Class A', batch: 'Batch 2023', enrollmentDate: '2023-01-01', status: 'đã thu phí'  },
+    { id: '2', name: 'Jane Smith', class: 'Class B', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'đã thu phí'  },
+    { id: '3', name: 'Jane Smith 2', class: 'Class C', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'chưa thu phí' },
+    { id: '4', name: 'Jane Smith 4', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'chưa thu phí' },
+    { id: '5', name: 'Jane Smith 5', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'chưa thu phí' },
+    { id: '6', name: 'Jane Smith 6', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'đã thu phí'  },
+    { id: '7', name: 'Jane Smith 7', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'đã thu phí'  },
+    { id: '8', name: 'Jane Smith 8', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'chưa thu phí'  },
     // Add more students as needed
   ]);
 
@@ -20,12 +20,12 @@ const StudentListScreen = () => {
 
   const handleAddStudent = () => {
     // Implement logic for adding a new student
-    Alert.alert('Add Student', 'Implement logic for adding a new student');
+    navigation.navigate('AddStudent', {});
   };
 
   const handleEditStudent = (id) => {
-    // Implement logic for editing a student
-    Alert.alert('Edit Student', `Implement logic for editing student with ID: ${id}`);
+    // Navigate to the EditStudent screen with the student ID as a parameter
+    navigation.navigate('EditStudent', { studentId: id, students  });
   };
 
   const handleDeleteStudent = (id) => {
@@ -43,6 +43,13 @@ const StudentListScreen = () => {
       <Text style={styles.studentInfo}>{`Lớp: ${item.class}`}</Text>
       <Text style={styles.studentInfo}>{`Khóa: ${item.batch}`}</Text>
       <Text style={styles.studentInfo}>{`Ngày đến trung tâm: ${item.enrollmentDate}`}</Text>
+      <Text style={{fontSize: 16}}>
+        <Text style={{ color: 'black' }}>Tình trạng: </Text>
+        <Text style={{ color: item.status === 'đã thu phí' ? 'green' : 'red', fontWeight: 'bold' }}>
+          {item.status}
+        </Text>
+      </Text>
+
       <View style={styles.studentActions}>
         <TouchableOpacity onPress={() => handleEditStudent(item.id)}>
           <MaterialIcons name="edit" size={24} color="#333" style={styles.actionIcon} />

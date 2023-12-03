@@ -49,10 +49,12 @@ const UserInfoScreen = ({ navigation }) => {
           </View>
         </TouchableOpacity>
 
-        <View style={styles.sectionTitle}>
-          <Ionicons name="cash" size={30} color="#333" style={styles.icon} />
-          <Text style={[styles.sectionTitleText, { marginLeft: 10 }]}>Thu học phí</Text>
-        </View>
+        <TouchableOpacity onPress={() => { navigation.navigate('StudentListPay')}}>
+          <View style={styles.sectionTitle}>
+            <Ionicons name="cash" size={30} color="#333" style={styles.icon} />
+            <Text style={[styles.sectionTitleText, { marginLeft: 10 }]}>Thu học phí</Text>
+          </View>
+        </TouchableOpacity>
 
         <TouchableOpacity onPress={() => { navigation.navigate('CourseList')}}>
           <View style={styles.sectionTitle}>
