@@ -5,14 +5,14 @@ import Icon from "react-native-vector-icons/Ionicons";
 
 const StudentListScreen = ({navigation}) => {
   const [students, setStudents] = useState([
-    { id: '1', name: 'John Doe', class: 'Class A', batch: 'Batch 2023', enrollmentDate: '2023-01-01', status: 'đã thu phí'  },
-    { id: '2', name: 'Jane Smith', class: 'Class B', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'đã thu phí'  },
-    { id: '3', name: 'Jane Smith 2', class: 'Class C', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'chưa thu phí' },
-    { id: '4', name: 'Jane Smith 4', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'chưa thu phí' },
-    { id: '5', name: 'Jane Smith 5', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'chưa thu phí' },
-    { id: '6', name: 'Jane Smith 6', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'đã thu phí'  },
-    { id: '7', name: 'Jane Smith 7', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'đã thu phí'  },
-    { id: '8', name: 'Jane Smith 8', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'chưa thu phí'  },
+    { id: '1', name: 'Nguyễn Văn Sáng', class: 'Class A', batch: 'Batch 2023', enrollmentDate: '2023-01-01', status: 'đã thu phí'  },
+    { id: '2', name: 'Bùi Văn Việt', class: 'Class B', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'đã thu phí'  },
+    { id: '3', name: 'Nguyễn Thị Tâm', class: 'Class C', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'chưa thu phí' },
+    { id: '4', name: 'Đào Hồng Huy', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'chưa thu phí' },
+    { id: '5', name: 'Lê Bá Giang', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'chưa thu phí' },
+    { id: '6', name: 'Huỳnh Công Mạnh', class: 'Class E', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'đã thu phí'  },
+    { id: '7', name: 'Phan Văn Trí', class: 'Class B', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'đã thu phí'  },
+    { id: '8', name: 'Hoàng Thị Quỳnh', class: 'Class E', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'chưa thu phí'  },
     // Add more students as needed
   ]);
 

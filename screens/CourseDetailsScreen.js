@@ -7,7 +7,6 @@ const CourseDetailsScreen = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.txtTitle}>Chi tiết khóa học</Text>
       <Text style={styles.courseTitle}>{courseTitle}</Text>
       <Image source={courseImg} style={styles.courseImage} />
       <Text style={styles.courseContent}>{courseContent}</Text>
@@ -66,8 +65,9 @@ const styles = StyleSheet.create({
         marginBottom: 8,
       },
       courseContent: {
-        fontSize: 20,
+        fontSize: 25,
         color: '#555',
+        lineHeight: 50
       },
           footer: {
             height: 100,

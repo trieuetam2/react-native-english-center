@@ -70,7 +70,7 @@ const LoginScreen = ({ navigation }) => {
           
         />
 
-        <CustomButton label={"Đăng nhập"} onPress={() => { navigation.navigate('UserInfo')}} />
+        <CustomButton label={"Đăng nhập"} onPress={() => { navigation.navigate('Trang chủ')}} />
         {/* <CustomButton label={"Đăng nhập"} onPress={() => { navigation.navigate('StudentList')}} />
         <CustomButton label={"Đăng nhập"} onPress={() => { navigation.navigate('CourseList')}} /> */}
 
@@ -91,7 +91,7 @@ const LoginScreen = ({ navigation }) => {
           style={{
             flexDirection: 'row',
             justifyContent: 'center',
-            marginTop: 200,
+            marginTop: 100,
             fontSize: 30,
           }}>
           <Text style={{fontSize: 20}}>Chưa có tài khoản?</Text>

@@ -3,9 +3,10 @@ import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity } from 'react
 
 const CourseListScreen = ({ navigation }) => {
   const courses = [
-    { id: '1', title: 'React Native Basics', img: require("../assets/images/CourseListScreen/iphoneX.jpg"), content: 'Learn the fundamentals of React Native.' },
-    { id: '2', title: 'Advanced JavaScript', img: require("../assets/images/CourseListScreen/iphone-12.jpg"), content: 'Deep dive into advanced JavaScript concepts.' },
-    { id: '3', title: 'Mobile App Design', img: require("../assets/images/CourseListScreen/iPhone6.png"), content: 'Explore principles and techniques of mobile app design.' }, 
+    { id: '1', title: 'Khóa học IELTS Topic Vocabulary 2023', img: require("../assets/images/CourseListScreen/topic1.jpeg"), content: 'Xem video. Mỗi bài giảng sẽ đính kèm file pdf giải nghĩa các từ trong video. Các bạn đọc thật kỹ từng từ, nghĩa và ví dụ bằng tiếng Anh. Chỗ nào chưa hiểu thì xem lại phần dịch đại ý bằng tiếng Việt. Nhớ rằng câu ví dụ chính là gợi ý idea để các bạn viết bài task 2, phần lớn đều phù hợp cả trong IELTS Speaking, Writing.' },
+    { id: '2', title: 'Khóa học IELTS Listening 2023', img: require("../assets/images/CourseListScreen/topic2.jpg"), content: '﻿+ Khóa học Listening online DUY NHẤT ĐI KÈM THỰC HÀNH và sửa bài chi tiết (chứ không phải chỉ học lý thuyết suông) . Khóa học ứng dụng công nghệ 4.0 thực hành trên website ieltsngocbach độc quyền đảm bảo phát huy hiệu quả tối đa' },
+    { id: '3', title: 'Khóa học IELTS Writing 2023', img: require("../assets/images/CourseListScreen/topic3.png"), content: 'Khóa học IELTS Writing online của mình đã trở lại và lợi hại hơn xưa. Với khóa online này, mình sẽ hướng dẫn các bạn cách tự học IELTS Writing một cách đơn giản hiệu quả bằng các video bài giảng và giáo trình mới nhất' }, 
+    { id: '4', title: 'Khóa học IELTS Speaking 2023', img: require("../assets/images/CourseListScreen/topic4.jpg"), content: 'Khóa học IELTS Speaking là khóa học kết hợp giữa thầy Ngọc Bách và thầy John, Pete - cựu giám khảo IELTS bản xứ ở UK. Đây là sự kết hợp giữa phương pháp giảng dạy đúng chuẩn theo tiêu chí chấm thi của giám khảo bản xứ như ở BC, IDP nhưng thêm cả các mẹo, phương pháp làm bài của giáo viên Việt Nam (như áp dụng template, bộ dự đoán speaking, phương pháp gom đề...) để tăng nhanh điểm thi Speaking trong thời gian ngắn' }, 
     // Add more courses as needed
   ];
 
@@ -27,7 +28,7 @@ const CourseListScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.txtTitle}>Danh sách khóa học</Text>
+
       <FlatList
         data={courses}
         renderItem={renderItem}
