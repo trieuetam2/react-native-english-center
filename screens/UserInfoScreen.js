@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
-  FlatList
 } from 'react-native';
 
 
@@ -22,46 +21,44 @@ import CalendarSreen from '../screens/CalendarScreen';
 const UserInfoScreen = ({ navigation }) => {
   const [open, setOpen] = useState(false);
   // Dummy user data
-  const user = [
-    {
-      id: '1',
-      name: 'John Doe',
-      imageUri: 'https://cdn-icons-png.flaticon.com/512/3177/3177440.png',
-    }
-  ];
+  const [userInfo, setUserInfo] = useState({
+    id: '1',
+    name: 'John Doe',
+    imageUri: 'https://cdn-icons-png.flaticon.com/512/3177/3177440.png',
+  });
 
-  const handleCoursePress = (courseId, courseTitle, courseImg) => {
-    navigation.navigate('Edituser', { courseId, courseTitle, courseImg });
+  const updateUserInfo = (newUserInfo) => {
+    setUserInfo(newUserInfo);
   };
 
-  const renderItem = ({ item }) => (
-    <TouchableOpacity onPress={() => handleCoursePress(item.id, item.name, item.imageUri)}>
-      <View style={styles.sectionTitle1}>
-        <Ionicons name="create-outline" size={30} color="#333" style={styles.icon} />
-        <Text style={[styles.sectionTitleText, { marginLeft: 10 }]}>Chỉnh sửa hồ sơ</Text>
-      </View>
-    </TouchableOpacity>
-  );
 
   return (
     <SafeAreaView style={{ flex: 1, justifyContent: 'center', marginLeft: 10, marginRight: 10, marginTop: 20 }}>
       <View
         style={{ paddingHorizontal: 25 }}>
         <View style={styles.header}>
-        <Image source={{ uri: user[0].imageUri }} style={styles.userImage} />
-            <View>
-                <Text style={styles.userName}>{user[0].name}</Text>
-                <Text style={styles.userRole}>Quản lý</Text>
-            </View>
+          <Image source={{ uri: userInfo.imageUri }} style={styles.userImage} />
+          <View>
+            <Text style={styles.userName}>{userInfo.name}</Text>
+            <Text style={styles.userRole}>Quản lý</Text>
+          </View>
         </View>
 
- 
-
-        <FlatList
-          data={user}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Edituser', {
+              courseId: userInfo.id,
+              courseTitle: userInfo.name,
+              courseImg: userInfo.imageUri,
+              updateUserInfo: updateUserInfo,
+            });
+            
+          }}>
+          <View style={styles.sectionTitle1}>
+            <Ionicons name="create-outline" size={30} color="#333" style={styles.icon} />
+            <Text style={[styles.sectionTitleText, { marginLeft: 10 }]}>Chỉnh sửa hồ sơ</Text>
+          </View>
+        </TouchableOpacity>
 
         <TouchableOpacity onPress={() => {navigation.navigate('Trang chủ')}}>
           <View style={styles.sectionTitle}>

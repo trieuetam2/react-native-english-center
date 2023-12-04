@@ -3,7 +3,7 @@ import { View, Text, ScrollView, TextInput, StyleSheet, Button, Alert } from 're
 import { useNavigation } from '@react-navigation/native';
 
 const EditStudentScreen = ({ route }) => {
-  const { students, studentId } = route.params;
+  const { students, studentId, updateStudentInfo } = route.params;
 
   // Find the selected student by ID
   const selectedStudent = students.find((student) => student.id === studentId);
@@ -14,11 +14,9 @@ const EditStudentScreen = ({ route }) => {
   const navigation = useNavigation();
 
   const handleSaveChanges = () => {
-    // Implement logic to save changes to the students array
-    // For now, just log the edited student information
-    console.log('Edited Student:', editedStudent);
-
-    Alert.alert('Changes Saved', 'The changes have been saved successfully.');
+    //console.log('Edited Student:', editedStudent);
+    updateStudentInfo(editedStudent);
+    //Alert.alert('Changes Saved', 'The changes have been saved successfully.');
 
     // Navigate back to StudentListScreen
     navigation.goBack();

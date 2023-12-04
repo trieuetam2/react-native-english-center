@@ -1,25 +1,49 @@
-// EditUserInfoScreen.js
-import React, { useState } from 'react';
+import React, { useState,useEffect  } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
-const EditUserInfoScreen = ({ route }) => {
-  const { courseId, courseTitle, courseImg } = route.params;
+const EditUserInfoScreen = ({ route, navigation }) => {
+  const { courseId, courseTitle, courseImg, updateUserInfo } = route.params;
+
+
+  const [updatedName, setUpdatedName] = useState(courseTitle);
+  const [updatedImageUri, setUpdatedImageUri] = useState(courseImg);
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
 
   const handleSaveChanges = () => {
-    // Handle save changes logic
+    updateUserInfo({
+      id: courseId,
+      name: updatedName,
+      imageUri: updatedImageUri,
+    });
+    navigation.goBack();
   };
+
+  useEffect(() => {
+    navigation.setOptions({
+      title: 'Edit User',
+      headerRight: () => (
+        <TouchableOpacity onPress={handleSaveChanges}>
+          <Text style={{ color: 'white', marginRight: 10 }}>Save</Text>
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation, handleSaveChanges]);
+  
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Thông tin cá nhân</Text>
 
-      <Image source={{ uri: courseImg }} style={styles.userImage} />
+      {updatedImageUri && <Image source={{ uri: updatedImageUri }} style={styles.userImage} />}
+
       <View>
         <Text style={styles.txtinput}>Họ và tên</Text>
         <TextInput
           style={styles.input}
           placeholder="Nhập tên"
-          value={courseTitle}
+          value={updatedName}
+          onChangeText={(text) => setUpdatedName(text)} // Handle text changes
         />
       </View>
       <View>
@@ -27,7 +51,8 @@ const EditUserInfoScreen = ({ route }) => {
         <TextInput
           style={styles.input}
           placeholder="Nhập link"
-          value={courseImg}
+          value={updatedImageUri}
+          onChangeText={(text) => setUpdatedImageUri(text)} // Handle text changes
         />
       </View>
       <View>
@@ -35,6 +60,9 @@ const EditUserInfoScreen = ({ route }) => {
         <TextInput
           style={styles.input}
           placeholder="Nhập mật khẩu cũ"
+          value={oldPassword}
+          onChangeText={(text) => setOldPassword(text)}
+          secureTextEntry
         />
       </View>
       <View>
@@ -42,7 +70,8 @@ const EditUserInfoScreen = ({ route }) => {
         <TextInput
           style={styles.input}
           placeholder="Nhập mật khẩu mới"
-          
+          onChangeText={(text) => setNewPassword(text)}
+          secureTextEntry
         />
       </View>
 
@@ -52,7 +81,6 @@ const EditUserInfoScreen = ({ route }) => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -99,7 +99,7 @@ const MainTabNavigator = () => (
 export default function App() {
   return (
     <NavigationContainer>
-      <MainTabNavigator />
+     <MainTabNavigator/>
     </NavigationContainer>
   );
 }

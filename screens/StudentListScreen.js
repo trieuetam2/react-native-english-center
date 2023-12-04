@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback  } from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, Alert, TextInput } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Icon from "react-native-vector-icons/Ionicons";
@@ -17,25 +17,94 @@ const StudentListScreen = ({navigation}) => {
   ]);
 
   const [visibleStudents, setVisibleStudents] = useState(5); // Số lượng học viên hiển thị ban đầu
+  const [searchText, setSearchText] = useState('');
 
+  const updateStudentInfo = useCallback((editedStudent) => {
+    setStudents((prevStudents) => {
+      const updatedStudents = prevStudents.map((student) =>
+        student.id === editedStudent.id ? editedStudent : student
+      );
+      return updatedStudents;
+    });
+  }, [students]);
+  
+  // StudentListScreen.js
   const handleAddStudent = () => {
-    // Implement logic for adding a new student
-    navigation.navigate('AddStudent', {});
+    navigation.navigate('AddStudent', {
+      addNewStudent: (newStudent) => {
+        setStudents((prevStudents) => [...prevStudents, { ...newStudent, id: (prevStudents.length + 1).toString() }]);
+      },
+    });
   };
+
 
   const handleEditStudent = (id) => {
     // Navigate to the EditStudent screen with the student ID as a parameter
-    navigation.navigate('EditStudent', { studentId: id, students  });
+    navigation.navigate('EditStudent', { studentId: id, students, updateStudentInfo });
   };
 
   const handleDeleteStudent = (id) => {
-    // Implement logic for deleting a student
-    Alert.alert('Delete Student', `Implement logic for deleting student with ID: ${id}`);
+    // Find the student to be deleted
+    const studentToDelete = students.find((student) => student.id === id);
+
+    // Display confirmation alert
+    Alert.alert(
+      'Delete Student',
+      `Are you sure you want to delete ${studentToDelete.name}?`,
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'Delete',
+          onPress: () => {
+            // Remove the student from the state
+            const updatedStudents = students.filter((student) => student.id !== id);
+            setStudents(updatedStudents);
+
+            // Display success message
+            Alert.alert('Delete Student', `Student ${studentToDelete.name} has been deleted successfully.`);
+          },
+        },
+      ],
+      { cancelable: false }
+    );
   };
 
   const handleShowMore = () => {
     setVisibleStudents((prevVisibleStudents) => prevVisibleStudents + 5);
   };
+
+  const handleSearch = (text) => {
+    setSearchText(text);
+  
+    // If the search text is empty, reset the list to the original list of students
+    if (text === '') {
+      setStudents([
+        { id: '1', name: 'Nguyễn Văn Sáng', class: 'Class A', batch: 'Batch 2023', enrollmentDate: '2023-01-01', status: 'đã thu phí'  },
+        { id: '2', name: 'Bùi Văn Việt', class: 'Class B', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'đã thu phí'  },
+        { id: '3', name: 'Nguyễn Thị Tâm', class: 'Class C', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'chưa thu phí' },
+        { id: '4', name: 'Đào Hồng Huy', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'chưa thu phí' },
+        { id: '5', name: 'Lê Bá Giang', class: 'Class D', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'chưa thu phí' },
+        { id: '6', name: 'Huỳnh Công Mạnh', class: 'Class E', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'đã thu phí'  },
+        { id: '7', name: 'Phan Văn Trí', class: 'Class B', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'đã thu phí'  },
+        { id: '8', name: 'Hoàng Thị Quỳnh', class: 'Class E', batch: 'Batch 2022', enrollmentDate: '2022-12-15', status: 'chưa thu phí'  },
+      ]);
+      setVisibleStudents(5);
+      return;
+    }
+  
+    const filteredStudents = students.filter((student) =>
+    student.name.toLowerCase().includes(text.toLowerCase())
+  );
+  
+    // Update the visible students and reset to the initial state
+    setVisibleStudents(5);
+    setStudents(filteredStudents);
+  };
+  
+  
 
   const renderItem = ({ item, index }) => (
     <View style={[styles.studentItem, index % 2 === 0 ? styles.evenItem : styles.oddItem]}>
@@ -72,7 +141,13 @@ const StudentListScreen = ({navigation}) => {
       <View style={styles.containerSearch}>
         <View style={styles.boxSearch}>
           <Icon name={'ios-search'} size={24} color={'#000000'} style={styles.searchIcon} />
-          <TextInput style={styles.txtSearch} placeholder="Tìm kiếm" placeholderTextColor="#888" />
+          <TextInput
+            style={styles.txtSearch}
+            placeholder="Tìm kiếm"
+            placeholderTextColor="#888"
+            value={searchText}
+            onChangeText={handleSearch}
+          />
         </View>
       </View>
       <FlatList
