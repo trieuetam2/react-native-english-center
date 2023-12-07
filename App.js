@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -20,6 +20,15 @@ import EditUserInfoScreen from './screens/EditUserInfoScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+
+const AuthStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false,}}/>
+    <Stack.Screen name="Signup" component={RegisterScreen} options={{headerShown: false,}}/>
+    <Stack.Screen name="ForgotPass" component={ForgotPassScreen} options={{headerShown: false,}}/>
+    <Stack.Screen name="Trang chủ" component={CalendarSreen} options={{headerShown: false,}}/>
+  </Stack.Navigator>
+);
 
 const SettingsUser = () => {
   return (
@@ -53,16 +62,16 @@ const SettingsCourseDetails = () => {
 
 const MainTabNavigator = () => (
   <Tab.Navigator>
-    <Tab.Screen
-          name="Trang chủ"
-          component={CalendarSreen}
-          options={{
-            tabBarLabel: 'Trang Chủ',
-            tabBarIcon: ({ color, size }) => (
-              <MaterialIcons name="home" color={color} size={size} />
-            ),
-          }}
-        />
+     <Tab.Screen
+      name="Trang chủ"
+      component={AuthStack}
+      options={{
+        tabBarLabel: 'Trang Chủ',
+        tabBarIcon: ({ color, size }) => (
+          <MaterialIcons name="home" color={color} size={size} />
+        ),
+      }}
+    />
     <Tab.Screen
       name="Khóa Học"
       component={SettingsCourseDetails}
@@ -92,14 +101,25 @@ const MainTabNavigator = () => (
         <MaterialIcons name="person" color={color} size={size} />
       ),
     }} />
+
+
   </Tab.Navigator>
 );
 
 
 export default function App() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    // Simulating a successful login after 2 seconds
+    const loginTimeout = setTimeout(() => {
+      setLoggedIn(true);
+    }, 2000);
+
+    return () => clearTimeout(loginTimeout);
+  }, []);
   return (
     <NavigationContainer>
-     <MainTabNavigator/>
+      {isLoggedIn ? <MainTabNavigator /> : <AuthStack />}
     </NavigationContainer>
   );
 }

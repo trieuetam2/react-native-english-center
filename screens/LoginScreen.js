@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   View,
@@ -16,6 +16,7 @@ import CustomButton from '../constants/CustomButton';
 
 
 const LoginScreen = ({ navigation }) => {
+  const [isLoggedIn, setLoggedIn] = useState(false);
   return (
     <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
       <View style={{ paddingHorizontal: 25 }}>
@@ -70,7 +71,7 @@ const LoginScreen = ({ navigation }) => {
           
         />
 
-        <CustomButton label={"Đăng nhập"} onPress={() => { navigation.navigate('Trang chủ')}} />
+        <CustomButton label={"Đăng nhập"} onPress={() => { navigation.navigate('Trang chủ');}} />
         {/* <CustomButton label={"Đăng nhập"} onPress={() => { navigation.navigate('StudentList')}} />
         <CustomButton label={"Đăng nhập"} onPress={() => { navigation.navigate('CourseList')}} /> */}
 
