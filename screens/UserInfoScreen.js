@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CommonActions } from '@react-navigation/native';
 import {
   SafeAreaView,
   ScrollView,
@@ -18,7 +19,7 @@ import CalendarSreen from '../screens/CalendarScreen';
 
 
 
-const UserInfoScreen = ({ navigation }) => {
+const UserInfoScreen = ({ navigation, setLoggedIn }) => {
   const [open, setOpen] = useState(false);
   // Dummy user data
   const [userInfo, setUserInfo] = useState({
@@ -89,7 +90,17 @@ const UserInfoScreen = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => { navigation.navigate('Login');}}
+          onPress={() => {
+            
+            navigation.dispatch(
+              CommonActions.reset({
+                index: 0,
+                routes: [
+                  { name: 'Trang chủ' } // replace 'Login' with the initial route of your application
+                ],
+              })
+            );
+          }}
           style={{
             backgroundColor: 'red',
             padding: 20,

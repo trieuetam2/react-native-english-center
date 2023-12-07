@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -21,12 +21,16 @@ import EditUserInfoScreen from './screens/EditUserInfoScreen';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const AuthStack = () => (
+const AuthStack = ({ navigation }) => (
   <Stack.Navigator>
-    <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false,}}/>
-    <Stack.Screen name="Signup" component={RegisterScreen} options={{headerShown: false,}}/>
-    <Stack.Screen name="ForgotPass" component={ForgotPassScreen} options={{headerShown: false,}}/>
-    <Stack.Screen name="Trang chủ" component={CalendarSreen} options={{headerShown: false,}}/>
+    <Stack.Screen
+      name="Login"
+      component={LoginScreen}
+      options={{ headerShown: false }}
+    />
+    <Stack.Screen name="Signup" component={RegisterScreen} options={{ headerShown: false }} />
+    <Stack.Screen name="ForgotPass" component={ForgotPassScreen} options={{ headerShown: false }} />
+    <Stack.Screen name="Trang chủ" component={CalendarSreen} options={{ headerShown: false }} />
   </Stack.Navigator>
 );
 
@@ -109,14 +113,11 @@ const MainTabNavigator = () => (
 
 export default function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
-  useEffect(() => {
-    // Simulating a successful login after 2 seconds
-    const loginTimeout = setTimeout(() => {
-      setLoggedIn(true);
-    }, 2000);
 
-    return () => clearTimeout(loginTimeout);
+  useEffect(() => {
+    setLoggedIn(true);
   }, []);
+
   return (
     <NavigationContainer>
       {isLoggedIn ? <MainTabNavigator /> : <AuthStack />}
